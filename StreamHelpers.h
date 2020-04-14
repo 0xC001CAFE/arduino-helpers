@@ -8,7 +8,7 @@
 namespace StreamHelpers{
     // via sequence filtered input stream is written to output stream
     // returns true after successful filtering
-    bool filterBySequence(Stream &input, Stream &output, const char *startSeq, const char *endSeq);
+    bool filterBySequence(Stream &input, Stream &output, const char *startSeq, const char *endSeq, bool invertedOutput);
 }
 
 #endif
