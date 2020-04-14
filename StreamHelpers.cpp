@@ -1,6 +1,8 @@
 #include "StreamHelpers.h"
 
 bool StreamHelpers::filterBySequence(Stream &input, Stream &output, const char *startSeq, const char *endSeq, bool invertedOutput){
+    if(!startSeq || !endSeq) return false;
+    
     size_t startSeqLen = strlen(startSeq);
     bool startSeqFound = false;
     
@@ -71,7 +73,7 @@ bool StreamHelpers::filterBySequence(Stream &input, Stream &output, const char *
             // buffered sequence does not correspond to the current sequence
             
             // write buffer to output stream
-            if(!invertedOutput) output.write(buffer, bufferIndex);
+            if((invertedOutput && startSeqFound) || (!invertedOutput && !startSeqFound)) output.write(buffer, bufferIndex);
             
             // reset buffer index
             bufferIndex = 0;
