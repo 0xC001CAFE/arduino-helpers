@@ -3,6 +3,10 @@
 
 // header file of the SdFat library
 #include <ArduinoFiles.h>
+#include "StreamHelpers.h"
+
+// the length of the filename should not exceed this value
+#define FILENAME_MAX_LENGTH 20
 
 namespace FileHelpers{
     // section between start and end sequence is removed from file
