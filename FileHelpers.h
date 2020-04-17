@@ -1,8 +1,8 @@
 #ifndef FileHelpers_h
 #define FileHelpers_h
 
-// header file of the SdFat library
-#include <ArduinoFiles.h>
+// uses the SdFat library
+#include <SdFat.h>
 #include "StreamHelpers.h"
 
 // the length of the filename should not exceed this value
