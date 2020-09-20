@@ -15,14 +15,14 @@ bool FileHelpers::removeBySequence(File &file, const char *startSeq, const char 
     if(!file.getName(filename, FILENAME_MAX_LENGTH)) result = false;
     
     // try to write the filtered file into the temporary file
-    if(!StreamHelpers::filterBySequence(file, tempFile, startSeq, endSeq, false)) result = false;
+    if(result && !StreamHelpers::filterBySequence(file, tempFile, startSeq, endSeq, false)) result = false;
     
     // remove the obsolete file
     // the temporary file contains the latest content
-    if(!file.remove()) result = false;
+    if(result && !file.remove()) result = false;
     
     // rename the temporary file to the filename of the removed file
-    if(!tempFile.rename(filename)) result = false;
+    if(result && !tempFile.rename(filename)) result = false;
     
     tempFile.close();
     
